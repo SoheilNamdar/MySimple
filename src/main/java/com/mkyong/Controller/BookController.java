@@ -2,6 +2,7 @@ package com.mkyong.Controller;
 
 import com.mkyong.Repository.BookRepository;
 import com.mkyong.Entity.Book;
+import com.mkyong.Service.BookService;
 import com.mkyong.error.BookNotFoundException;
 import com.mkyong.error.BookUnSupportedFieldPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,12 @@ import java.util.Map;
 public class BookController {
 
     @Autowired
-    private BookRepository repository;
+    private BookService bookService;
 
     // Find
     @GetMapping("/books")
     List<Book> findAll() {
-        return repository.findAll();
+        return bookService.findAll();
     }
 
     // Save
@@ -29,60 +30,33 @@ public class BookController {
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     Book newBook(@RequestBody Book newBook) {
-        return repository.save(newBook);
+        return bookService.newBook(newBook);
     }
 
     // Find
     @GetMapping("/books/{id}")
     Book findOne(@PathVariable Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException(id));
+        return bookService.findOne(id);
     }
 
     // Save or update
     @PutMapping("/books/{id}")
     Book saveOrUpdate(@RequestBody Book newBook, @PathVariable Long id) {
 
-        return repository.findById(id)
-                .map(x -> {
-                    x.setName(newBook.getName());
-                    x.setAuthor(newBook.getAuthor());
-                    x.setPrice(newBook.getPrice());
-                    return repository.save(x);
-                })
-                .orElseGet(() -> {
-                    newBook.setId(id);
-                    return repository.save(newBook);
-                });
+        return bookService.saveOrUpdate(newBook,id);
     }
 
     // update author only
     @PatchMapping("/books/{id}")
     Book patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
 
-        return repository.findById(id)
-                .map(x -> {
-
-                    String author = update.get("author");
-                    if (!StringUtils.isEmpty(author)) {
-                        x.setAuthor(author);
-
-                        // better create a custom method to update a value = :newValue where id = :id
-                        return repository.save(x);
-                    } else {
-                        throw new BookUnSupportedFieldPatchException(update.keySet());
-                    }
-
-                })
-                .orElseGet(() -> {
-                    throw new BookNotFoundException(id);
-                });
+        return bookService.patch(update, id);
 
     }
 
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable Long id) {
-        repository.deleteById(id);
+        bookService.deleteBook(id);
     }
 
 }

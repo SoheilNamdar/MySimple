@@ -18,23 +18,23 @@ public class BookService {
     private BookRepository repository;
 
     // Find
-    List<Book> findAll() {
+    public List<Book> findAll() {
         return repository.findAll();
     }
 
     // Save
-    Book newBook(Book newBook) {
+    public Book newBook(Book newBook) {
         return repository.save(newBook);
     }
 
     // Find
-    Book findOne(Long id) {
+    public Book findOne(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException(id));
     }
 
     // Save or update
-    Book saveOrUpdate(Book newBook, Long id) {
+    public Book saveOrUpdate(Book newBook, Long id) {
 
         return repository.findById(id)
                 .map(x -> {
@@ -50,7 +50,7 @@ public class BookService {
     }
 
     // update author only
-    Book patch(Map<String, String> update, Long id) {
+    public Book patch(Map<String, String> update, Long id) {
 
         return repository.findById(id)
                 .map(x -> {
@@ -72,7 +72,7 @@ public class BookService {
 
     }
 
-    void deleteBook(Long id) {
+    public void deleteBook(Long id) {
         repository.deleteById(id);
     }
 }
