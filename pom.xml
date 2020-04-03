@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-data-jpa-mysql</artifactId>
+    <artifactId>spring-rest-hello-world</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Spring Data JPA MYSQL</name>
+    <name>Spring Boot REST API Example</name>
     <version>1.0</version>
 
     <parent>
@@ -15,6 +15,7 @@
         <version>2.1.2.RELEASE</version>
     </parent>
 
+    <!-- Java 8 -->
     <properties>
         <java.version>1.8</java.version>
         <downloadSources>true</downloadSources>
@@ -23,12 +24,18 @@
 
     <dependencies>
 
+        <!-- spring mvc, rest -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- jpa, crud repository -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        
+
         <!-- MySQL -->
         <dependency>
             <groupId>mysql</groupId>
@@ -36,10 +43,26 @@
             <version>8.0.19</version>
         </dependency>
 
+        <!-- unit test rest -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- test patch operation need this -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- hot swapping, disable cache for template, enable live reload -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -50,6 +73,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -62,3 +88,4 @@
 
     </build>
 </project>
+
