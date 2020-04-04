@@ -1,5 +1,7 @@
 package com.mkyong.Controller;
 
+import com.mkyong.DTO.BookDTO;
+import com.mkyong.Mapper.BookMapperMPS;
 import com.mkyong.Repository.BookRepository;
 import com.mkyong.Entity.Book;
 import com.mkyong.Service.BookService;
@@ -19,38 +21,41 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private BookMapperMPS bookMapper;
+
     // Find
     @GetMapping("/books")
-    List<Book> findAll() {
-        return bookService.findAll();
+    public List<BookDTO> findAll() {
+        return bookMapper.toDTO(bookService.findAll());
     }
 
     // Save
     @PostMapping("/books")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
-    Book newBook(@RequestBody Book newBook) {
-        return bookService.newBook(newBook);
+    public BookDTO newBook(@RequestBody BookDTO newBookDTO) {
+        return bookMapper.toDTO(bookService.newBook(bookMapper.toEntity(newBookDTO)));
     }
 
     // Find
     @GetMapping("/books/{id}")
-    Book findOne(@PathVariable Long id) {
-        return bookService.findOne(id);
+    public BookDTO findOne(@PathVariable Long id) {
+        return bookMapper.toDTO(bookService.findOne(id));
     }
 
     // Save or update
     @PutMapping("/books/{id}")
-    Book saveOrUpdate(@RequestBody Book newBook, @PathVariable Long id) {
+    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @PathVariable Long id) {
 
-        return bookService.saveOrUpdate(newBook,id);
+        return bookMapper.toDTO(bookService.saveOrUpdate(bookMapper.toEntity(newBookDTO),id));
     }
 
     // update author only
     @PatchMapping("/books/{id}")
-    Book patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
+    public BookDTO patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
 
-        return bookService.patch(update, id);
+        return bookMapper.toDTO(bookService.patch(update, id));
 
     }
 
