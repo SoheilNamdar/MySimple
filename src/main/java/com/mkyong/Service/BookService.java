@@ -1,6 +1,8 @@
 package com.mkyong.Service;
 
+import com.mkyong.DTO.BookDTO;
 import com.mkyong.Entity.Book;
+import com.mkyong.Mapper.BookMapperMPS;
 import com.mkyong.Repository.BookRepository;
 import com.mkyong.error.BookNotFoundException;
 import com.mkyong.error.BookUnSupportedFieldPatchException;
@@ -19,26 +21,29 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
+    @Autowired
+    private BookMapperMPS bookMapper;
+
     // Find
-    public List<Book> findAll() {
-        return repository.findAll();
+    public List<BookDTO> findAll() {
+        return bookMapper.toDTO(repository.findAll());
     }
 
     // Save
-    public Book newBook(Book newBook) {
-        return repository.save(newBook);
+    public BookDTO newBook(Book newBook) {
+        return bookMapper.toDTO(repository.save(newBook));
     }
 
     // Find
-    public Book findOne(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException(id));
+    public BookDTO findOne(Long id) {
+        return bookMapper.toDTO(repository.findById(id)
+                .orElseThrow(() -> new BookNotFoundException(id)));
     }
 
     // Save or update
-    public Book saveOrUpdate(Book newBook, Long id) {
+    public BookDTO saveOrUpdate(Book newBook, Long id) {
 
-        return repository.findById(id)
+        return bookMapper.toDTO(repository.findById(id)
                 .map(x -> {
                     x.setName(newBook.getName());
                     x.setAuthor(newBook.getAuthor());
@@ -48,13 +53,13 @@ public class BookService {
                 .orElseGet(() -> {
                     newBook.setId(id);
                     return repository.save(newBook);
-                });
+                }));
     }
 
     // update author only
-    public Book patch(Map<String, String> update, Long id) {
+    public BookDTO patch(Map<String, String> update, Long id) {
 
-        return repository.findById(id)
+        return bookMapper.toDTO(repository.findById(id)
                 .map(x -> {
 
                     String author = update.get("author");
@@ -70,7 +75,7 @@ public class BookService {
                 })
                 .orElseGet(() -> {
                     throw new BookNotFoundException(id);
-                });
+                }));
 
     }
 

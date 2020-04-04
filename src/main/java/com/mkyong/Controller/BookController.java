@@ -27,7 +27,7 @@ public class BookController {
     // Find
     @GetMapping("/books")
     public List<BookDTO> findAll() {
-        return bookMapper.toDTO(bookService.findAll());
+        return bookService.findAll();
     }
 
     // Save
@@ -35,27 +35,27 @@ public class BookController {
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO newBook(@RequestBody BookDTO newBookDTO) {
-        return bookMapper.toDTO(bookService.newBook(bookMapper.toEntity(newBookDTO)));
+        return bookService.newBook(bookMapper.toEntity(newBookDTO));
     }
 
     // Find
     @GetMapping("/books/{id}")
     public BookDTO findOne(@PathVariable Long id) {
-        return bookMapper.toDTO(bookService.findOne(id));
+        return bookService.findOne(id);
     }
 
     // Save or update
     @PutMapping("/books/{id}")
     public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @PathVariable Long id) {
 
-        return bookMapper.toDTO(bookService.saveOrUpdate(bookMapper.toEntity(newBookDTO),id));
+        return bookService.saveOrUpdate(bookMapper.toEntity(newBookDTO),id);
     }
 
     // update author only
     @PatchMapping("/books/{id}")
     public BookDTO patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
 
-        return bookMapper.toDTO(bookService.patch(update, id));
+        return bookService.patch(update, id);
 
     }
 
