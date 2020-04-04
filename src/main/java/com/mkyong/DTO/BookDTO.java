@@ -1,13 +1,9 @@
 package com.mkyong.DTO;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 
 public class BookDTO {
 
-    @Id
-    @GeneratedValue
     private Long id;
     private String name;
     private String author;

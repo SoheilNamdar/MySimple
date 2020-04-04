@@ -6,12 +6,14 @@ import com.mkyong.error.BookNotFoundException;
 import com.mkyong.error.BookUnSupportedFieldPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class BookService {
 
     @Autowired

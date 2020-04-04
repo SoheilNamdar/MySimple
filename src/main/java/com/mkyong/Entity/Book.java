@@ -1,5 +1,6 @@
 package com.mkyong.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,9 +11,13 @@ public class Book {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "author", unique = true)
     private String author;
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
 
     // avoid this "No default constructor for entity"
