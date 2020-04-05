@@ -15,23 +15,8 @@ public class OrderDetail {
     private Long id;
     @Column(name = "name")
     private int name;
-    @Column(name = "taxStatus", unique = true)
+    @Column(name = "tax_status", unique = true)
     private String taxStatus;
-
-    // avoid this "No default constructor for entity"
-    public OrderDetail() {
-    }
-
-    public OrderDetail(Long id, int name, String taxStatus) {
-        this.id = id;
-        this.name = name;
-        this.taxStatus = taxStatus;
-    }
-
-    public OrderDetail(int name, String taxStatus) {
-        this.name = name;
-        this.taxStatus = taxStatus;
-    }
 
     public Long getId() {
         return id;

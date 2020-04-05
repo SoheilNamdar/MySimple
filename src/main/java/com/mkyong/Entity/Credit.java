@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Credit extends Payment {
+public class Credit {
 
     @Id
     @GeneratedValue
@@ -15,21 +15,10 @@ public class Credit extends Payment {
     private Long id;
     @Column(name = "number", unique = true)
     private String number;
-    @Column(name = "type", unique = true)
+    @Column(name = "type")
     private String type;
     @Column(name = "expireDate")
     private Date expireDate;
-
-    // avoid this "No default constructor for entity"
-    public Credit() {
-    }
-
-    public Credit(Long id, String number, String type, Date expireDate) {
-        this.id=id;
-        this.number=number;
-        this.type=type;
-        this.expireDate=expireDate;
-    }
 
     public Long getId() {
         return id;

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class WireTransfer extends Payment {
+public class WireTransfer {
 
     @Id
     @GeneratedValue
@@ -15,18 +15,8 @@ public class WireTransfer extends Payment {
     private Long id;
     @Column(name = "bankID", unique = true)
     private String bankID;
-    @Column(name = "bankName", unique = true)
+    @Column(name = "bank_name", unique = true)
     private String bankName;
-
-    // avoid this "No default constructor for entity"
-    public WireTransfer() {
-    }
-
-    public WireTransfer(Long id, String bankID, String bankName, Date expireDate) {
-        this.id=id;
-        this.bankID=bankID;
-        this.bankName=bankName;
-    }
 
     public Long getId() {
         return id;

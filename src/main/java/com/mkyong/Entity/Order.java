@@ -1,10 +1,8 @@
 package com.mkyong.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+import com.mkyong.Entity.Enum.OrderStatus;
+import javax.persistence.*;
+import java.time.ZonedDateTime;
 
 @Entity
 public class Order {
@@ -14,30 +12,24 @@ public class Order {
     @Column(name = "id")
     private Long id;
     @Column(name = "date")
-    private Date date;
-    @Column(name = "status")
+    private ZonedDateTime date;
+
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    // avoid this "No default constructor for entity"
-    public Order() {
+    public Long getId() {
+        return id;
     }
 
-    public Order(Long id, Date date, OrderStatus status ) {
+    public void setId(Long id) {
         this.id = id;
-        this.date = date;
-        this.status = status;
     }
 
-    public Order(Date date, OrderStatus status ) {
-        this.date = date;
-        this.status = status;
-    }
-
-    public Date getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
     }
 

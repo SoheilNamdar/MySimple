@@ -1,4 +1,4 @@
-package com.mkyong.Entity;
+package com.mkyong.Entity.Enum;
 
 public enum OrderStatus {
     CREATE,

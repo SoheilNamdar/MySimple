@@ -12,29 +12,8 @@ public class Payment {
     @GeneratedValue
     @Column(name = "id")
     private Long id;
-    @Column(name = "amount", unique = true)
+    @Column(name = "amount")
     private float amount;
-
-    // avoid this "No default constructor for entity"
-    public Payment() {
-    }
-
-    public Payment(Long id, String description, float amount) {
-        this.id = id;
-        this.amount = amount;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public Payment(String description, float amount) {
-        this.amount = amount;
-    }
 
     public Long getId() {
         return id;
@@ -44,4 +23,11 @@ public class Payment {
         this.id = id;
     }
 
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
 }

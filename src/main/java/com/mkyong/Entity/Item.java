@@ -14,23 +14,8 @@ public class Item {
     private Long id;
     @Column(name = "description")
     private String description;
-    @Column(name = "weight", unique = true)
+    @Column(name = "weight")
     private float weight;
-
-    // avoid this "No default constructor for entity"
-    public Item() {
-    }
-
-    public Item(Long id, String description, float weight) {
-        this.id = id;
-        this.description = description;
-        this.weight = weight;
-    }
-
-    public Item(String description, float weight) {
-        this.description = description;
-        this.weight = weight;
-    }
 
     public Long getId() {
         return id;
@@ -48,5 +33,11 @@ public class Item {
         this.weight = weight;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
