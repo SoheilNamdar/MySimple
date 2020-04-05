@@ -1,15 +1,9 @@
 package com.mkyong.Controller;
 
 import com.mkyong.DTO.BookDTO;
-import com.mkyong.Mapper.BookMapperMPS;
-import com.mkyong.Repository.BookRepository;
-import com.mkyong.Entity.Book;
 import com.mkyong.Service.BookService;
-import com.mkyong.error.BookNotFoundException;
-import com.mkyong.error.BookUnSupportedFieldPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,6 +50,7 @@ public class BookController {
 
     }
 
+    //delete
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);

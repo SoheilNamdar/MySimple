@@ -1,4 +1,4 @@
-package com.mkyong.error;
+package com.mkyong.error.Book;
 
 public class BookNotFoundException extends RuntimeException {
 
