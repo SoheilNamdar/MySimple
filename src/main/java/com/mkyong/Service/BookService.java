@@ -19,47 +19,48 @@ import java.util.Map;
 public class BookService {
 
     @Autowired
-    private BookRepository repository;
+    private BookRepository bookRepository;
 
     @Autowired
     private BookMapperMPS bookMapper;
 
     // Find
     public List<BookDTO> findAll() {
-        return bookMapper.toDTO(repository.findAll());
+        return bookMapper.toDTO(bookRepository.findAll());
     }
 
     // Save
-    public BookDTO newBook(Book newBook) {
-        return bookMapper.toDTO(repository.save(newBook));
+    public BookDTO newBook(BookDTO newBookDTO) {
+
+        return bookMapper.toDTO(bookRepository.save(bookMapper.toEntity(newBookDTO)));
     }
 
     // Find
     public BookDTO findOne(Long id) {
-        return bookMapper.toDTO(repository.findById(id)
+        return bookMapper.toDTO(bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException(id)));
     }
 
     // Save or update
-    public BookDTO saveOrUpdate(Book newBook, Long id) {
+    public BookDTO saveOrUpdate(BookDTO newBookDTO, Long id) {
 
-        return bookMapper.toDTO(repository.findById(id)
+        return bookRepository.findById(id)
                 .map(x -> {
-                    x.setName(newBook.getName());
-                    x.setAuthor(newBook.getAuthor());
-                    x.setPrice(newBook.getPrice());
-                    return repository.save(x);
+                    x.setName(newBookDTO.getName());
+                    x.setAuthor(newBookDTO.getAuthor());
+                    x.setPrice(newBookDTO.getPrice());
+                    return bookMapper.toDTO(bookRepository.save(x));
                 })
                 .orElseGet(() -> {
-                    newBook.setId(id);
-                    return repository.save(newBook);
-                }));
+                    newBookDTO.setId(id);
+                    return bookMapper.toDTO(bookRepository.save(bookMapper.toEntity(newBookDTO)));
+                });
     }
 
     // update author only
     public BookDTO patch(Map<String, String> update, Long id) {
 
-        return bookMapper.toDTO(repository.findById(id)
+        return bookMapper.toDTO(bookRepository.findById(id)
                 .map(x -> {
 
                     String author = update.get("author");
@@ -67,7 +68,7 @@ public class BookService {
                         x.setAuthor(author);
 
                         // better create a custom method to update a value = :newValue where id = :id
-                        return repository.save(x);
+                        return bookRepository.save(x);
                     } else {
                         throw new BookUnSupportedFieldPatchException(update.keySet());
                     }
@@ -80,6 +81,6 @@ public class BookService {
     }
 
     public void deleteBook(Long id) {
-        repository.deleteById(id);
+        bookRepository.deleteById(id);
     }
 }

@@ -21,9 +21,6 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Autowired
-    private BookMapperMPS bookMapper;
-
     // Find
     @GetMapping("/books")
     public List<BookDTO> findAll() {
@@ -35,7 +32,7 @@ public class BookController {
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public BookDTO newBook(@RequestBody BookDTO newBookDTO) {
-        return bookService.newBook(bookMapper.toEntity(newBookDTO));
+        return bookService.newBook(newBookDTO);
     }
 
     // Find
@@ -48,7 +45,7 @@ public class BookController {
     @PutMapping("/books/{id}")
     public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @PathVariable Long id) {
 
-        return bookService.saveOrUpdate(bookMapper.toEntity(newBookDTO),id);
+        return bookService.saveOrUpdate(newBookDTO,id);
     }
 
     // update author only
