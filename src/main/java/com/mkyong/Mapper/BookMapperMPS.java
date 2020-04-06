@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface BookMapperMPS {
+
     BookDTO toDTO(Book book);
     Book toEntity(BookDTO bookDTO);
 
