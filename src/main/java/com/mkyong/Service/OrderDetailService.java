@@ -45,8 +45,7 @@ public class OrderDetailService {
     }
 
     //update
-    @PutMapping("/orderDetails")
-    public OrderDetailDTO update(@RequestBody OrderDetailDTO orderDetailDTO, @PathVariable Long id) {
+    public OrderDetailDTO update(OrderDetailDTO orderDetailDTO, Long id) {
 
         return orderDetailMapper.toDTO(orderDetailRepository.findById(id)
                 .map(x -> {

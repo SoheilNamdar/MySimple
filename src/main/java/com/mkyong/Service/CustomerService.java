@@ -44,8 +44,7 @@ public class CustomerService {
     }
 
     //update
-    @PutMapping("/customers")
-    public CustomerDTO update(@RequestBody CustomerDTO customerDTO, @PathVariable Long id) {
+    public CustomerDTO update(CustomerDTO customerDTO, Long id) {
 
         return customerMapper.toDTO(customerRepository.findById(id)
                 .map(x -> {

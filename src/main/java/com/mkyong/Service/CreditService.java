@@ -48,8 +48,7 @@ public class CreditService {
     }
 
     //update
-    @PutMapping("/credits")
-    public CreditDTO update(@RequestBody CreditDTO newCreditDTO, @PathVariable Long id) {
+    public CreditDTO update(CreditDTO newCreditDTO, Long id) {
 
         return creditMapper.toDTO(creditRepository.findById(id)
                 .map(x -> {

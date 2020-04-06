@@ -45,8 +45,7 @@ public class PaymentService {
     }
 
     //update
-    @PutMapping("/payments")
-    public PaymentDTO update(@RequestBody PaymentDTO payment, @PathVariable Long id) {
+    public PaymentDTO update(PaymentDTO payment, Long id) {
 
         return paymentMapper.toDTO(paymentRepository.findById(id)
                 .map(x -> {

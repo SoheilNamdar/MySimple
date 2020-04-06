@@ -44,8 +44,7 @@ public class WireTransferService {
     }
 
     //update
-    @PutMapping("/wireTransfers")
-    public WireTransferDTO update(@RequestBody WireTransferDTO wireTransfer, @PathVariable Long id) {
+    public WireTransferDTO update(WireTransferDTO wireTransfer, Long id) {
 
         return wireTransferMapper.toDTO(wireTransferRepository.findById(id)
                 .map(x -> {

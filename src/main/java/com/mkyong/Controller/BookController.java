@@ -30,14 +30,14 @@ public class BookController {
     }
 
     // Find
-    @GetMapping("/books/{id}")
-    public BookDTO findOne(@PathVariable Long id) {
+    @GetMapping("/books")
+    public BookDTO findOne(@RequestBody Long id) {
         return bookService.findOne(id);
     }
 
     // Save or update
-    @PutMapping("/books/{id}")
-    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @PathVariable Long id) {
+    @PutMapping("/books")
+    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @RequestBody Long id) {
 
         return bookService.saveOrUpdate(newBookDTO,id);
     }

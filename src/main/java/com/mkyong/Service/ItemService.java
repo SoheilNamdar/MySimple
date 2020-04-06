@@ -44,8 +44,7 @@ public class ItemService {
     }
 
     //update
-    @PutMapping("/items")
-    public ItemDTO update(@RequestBody ItemDTO itemDTO, @PathVariable Long id) {
+    public ItemDTO update(ItemDTO itemDTO, Long id) {
 
         return itemMapper.toDTO(itemRepository.findById(id)
                 .map(x -> {
