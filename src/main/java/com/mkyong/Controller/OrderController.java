@@ -2,7 +2,7 @@ package com.mkyong.Controller;
 
 import com.mkyong.Repository.OrderRepository;
 import com.mkyong.Entity.Order;
-import com.mkyong.error.OrderNotFoundException;
+import com.mkyong.error.NotFoundException.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

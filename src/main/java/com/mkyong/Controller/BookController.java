@@ -42,13 +42,13 @@ public class BookController {
         return bookService.saveOrUpdate(newBookDTO,id);
     }
 
-    // update author only
+    /* update author only
     @PatchMapping("/books/{id}")
     public BookDTO patch(@RequestBody Map<String, String> update, @PathVariable Long id) {
 
         return bookService.patch(update, id);
 
-    }
+    }*/
 
     //delete
     @DeleteMapping("/books/{id}")

@@ -36,9 +36,7 @@ public class Credit {
         this.number = number;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
 
     public void setType(String type) {
         this.type = type;

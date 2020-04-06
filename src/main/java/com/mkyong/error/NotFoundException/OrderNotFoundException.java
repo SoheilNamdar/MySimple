@@ -1,4 +1,4 @@
-package com.mkyong.error;
+package com.mkyong.error.NotFoundException;
 
 public class OrderNotFoundException extends RuntimeException {
 

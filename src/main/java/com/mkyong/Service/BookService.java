@@ -3,14 +3,11 @@ package com.mkyong.Service;
 import com.mkyong.DTO.BookDTO;
 import com.mkyong.Mapper.BookMapperMPS;
 import com.mkyong.Repository.BookRepository;
-import com.mkyong.error.Book.BookNotFoundException;
-import com.mkyong.error.Book.BookUnSupportedFieldPatchException;
+import com.mkyong.error.NotFoundException.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class BookService {
@@ -54,7 +51,7 @@ public class BookService {
                 });
     }
 
-    // update author only
+    /* update author only
     public BookDTO patch(Map<String, String> update, Long id) {
 
         return bookMapper.toDTO(bookRepository.findById(id)
@@ -67,15 +64,16 @@ public class BookService {
                         // better create a custom method to update a value = :newValue where id = :id
                         return bookRepository.save(x);
                     } else {
-                        throw new BookUnSupportedFieldPatchException(update.keySet());
+                        throw new UnSupportedFieldPatchException(update.keySet());
                     }
 
                 })
                 .orElseGet(() -> {
-                    throw new BookNotFoundException(id);
+                    throw new NotFoundException(id);
                 }));
 
     }
+    */
 
     //delete
     public void deleteBook(Long id) {
