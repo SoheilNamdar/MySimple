@@ -29,9 +29,9 @@ public class OrderService {
     }
 
     // Save
-    public OrderDTO newOrder(Order newOrder) {
+    public OrderDTO newOrder(OrderDTO newOrder) {
 
-        return orderMapper.toDTO(orderRepository.save(newOrder));
+        return orderMapper.toDTO(orderRepository.save(orderMapper.toEntity(newOrder)));
     }
 
     // Find
@@ -41,13 +41,13 @@ public class OrderService {
     }
 
     //Save
-    public OrderDTO save(Order newOrder) {
-        return orderMapper.toDTO(orderRepository.save(newOrder));
+    public OrderDTO save(OrderDTO newOrder) {
+        return orderMapper.toDTO(orderRepository.save(orderMapper.toEntity(newOrder)));
     }
 
     //update
     @PutMapping("/orders")
-    public OrderDTO update(@RequestBody Order order, @PathVariable Long id) {
+    public OrderDTO update(@RequestBody OrderDTO order, @PathVariable Long id) {
 
         return orderMapper.toDTO(orderRepository.findById(id)
                 .map(x -> {

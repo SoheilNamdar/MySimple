@@ -1,17 +1,9 @@
 package com.mkyong.Service;
 
-import com.mkyong.DTO.CreditDTO;
 import com.mkyong.DTO.CustomerDTO;
-import com.mkyong.DTO.ItemDTO;
-import com.mkyong.Entity.Customer;
-import com.mkyong.Entity.Item;
-import com.mkyong.Mapper.CreditMapperMPS;
 import com.mkyong.Mapper.CustomerMapperMPS;
-import com.mkyong.Repository.CreditRepository;
 import com.mkyong.Repository.CustomerRepository;
-import com.mkyong.error.NotFoundException.CreditNotFoundException;
 import com.mkyong.error.NotFoundException.CustomerNotFoundException;
-import com.mkyong.error.NotFoundException.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,20 +39,20 @@ public class CustomerService {
     }
 
     //Save
-    public CustomerDTO save(Customer newCustomer) {
-        return customerMapper.toDTO(customerRepository.save(newCustomer));
+    public CustomerDTO save(CustomerDTO newCustomerDTO) {
+        return customerMapper.toDTO(customerRepository.save(customerMapper.toEntity(newCustomerDTO)));
     }
 
     //update
     @PutMapping("/customers")
-    public CustomerDTO update(@RequestBody Customer customer, @PathVariable Long id) {
+    public CustomerDTO update(@RequestBody CustomerDTO customerDTO, @PathVariable Long id) {
 
         return customerMapper.toDTO(customerRepository.findById(id)
                 .map(x -> {
-                    x.setId(customer.getId());
-                    x.setDeliveryAddress(customer.getDeliveryAddress());
-                    x.setContact(customer.getContact());
-                    x.setActive(customer.getActive());
+                    x.setId(customerDTO.getId());
+                    x.setDeliveryAddress(customerDTO.getDeliveryAddress());
+                    x.setContact(customerDTO.getContact());
+                    x.setActive(customerDTO.getActive());
                     return customerRepository.save(x);
                 })
                 .orElseThrow(() -> new CustomerNotFoundException(id)));

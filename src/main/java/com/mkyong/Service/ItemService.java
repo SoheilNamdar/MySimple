@@ -39,19 +39,19 @@ public class ItemService {
     }
 
     //Save
-    public ItemDTO save(Item newItem) {
-        return itemMapper.toDTO(itemRepository.save(newItem));
+    public ItemDTO save(ItemDTO newItemDTO) {
+        return itemMapper.toDTO(itemRepository.save(itemMapper.toEntity(newItemDTO)));
     }
 
     //update
     @PutMapping("/items")
-    public ItemDTO update(@RequestBody Item item, @PathVariable Long id) {
+    public ItemDTO update(@RequestBody ItemDTO itemDTO, @PathVariable Long id) {
 
         return itemMapper.toDTO(itemRepository.findById(id)
                 .map(x -> {
-                    x.setId(item.getId());
-                    x.setDescription(item.getDescription());
-                    x.setWeight(item.getWeight());
+                    x.setId(itemDTO.getId());
+                    x.setDescription(itemDTO.getDescription());
+                    x.setWeight(itemDTO.getWeight());
                     return itemRepository.save(x);
                 })
                 .orElseThrow(() -> new ItemNotFoundException(id)));

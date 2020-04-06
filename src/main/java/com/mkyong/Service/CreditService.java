@@ -43,20 +43,20 @@ public class CreditService {
     }
 
     //Save
-    public CreditDTO save(Credit newCredit) {
-        return creditMapper.toDTO(creditRepository.save(newCredit));
+    public CreditDTO save(CreditDTO newCreditDTO) {
+        return creditMapper.toDTO(creditRepository.save(creditMapper.toEntity(newCreditDTO)));
     }
 
     //update
     @PutMapping("/credits")
-    public CreditDTO update(@RequestBody Credit credit, @PathVariable Long id) {
+    public CreditDTO update(@RequestBody CreditDTO newCreditDTO, @PathVariable Long id) {
 
         return creditMapper.toDTO(creditRepository.findById(id)
                 .map(x -> {
-                    x.setId(credit.getId());
-                    x.setNumber(credit.getNumber());
-                    x.setType(credit.getType());
-                    x.setExpireDate(credit.getExpireDate());
+                    x.setId(newCreditDTO.getId());
+                    x.setNumber(newCreditDTO.getNumber());
+                    x.setType(newCreditDTO.getType());
+                    x.setExpireDate(newCreditDTO.getExpireDate());
                     return creditRepository.save(x);
                 })
                 .orElseThrow(() -> new CreditNotFoundException(id)));

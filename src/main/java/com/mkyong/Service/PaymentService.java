@@ -40,13 +40,13 @@ public class PaymentService {
     }
 
     //Save
-    public PaymentDTO save(Payment newPayment) {
-        return paymentMapper.toDTO(paymentRepository.save(newPayment));
+    public PaymentDTO save(PaymentDTO newPayment) {
+        return paymentMapper.toDTO(paymentRepository.save(paymentMapper.toEntity(newPayment)));
     }
 
     //update
     @PutMapping("/payments")
-    public PaymentDTO update(@RequestBody Payment payment, @PathVariable Long id) {
+    public PaymentDTO update(@RequestBody PaymentDTO payment, @PathVariable Long id) {
 
         return paymentMapper.toDTO(paymentRepository.findById(id)
                 .map(x -> {

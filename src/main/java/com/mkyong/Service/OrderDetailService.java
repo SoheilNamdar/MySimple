@@ -28,9 +28,9 @@ public class OrderDetailService {
     }
 
     // Save
-    public OrderDetailDTO newOrderDetail(OrderDetail newOrderDetail) {
+    public OrderDetailDTO newOrderDetail(OrderDetailDTO newOrderDetailDTO) {
 
-        return orderDetailMapper.toDTO(orderDetailRepository.save(newOrderDetail));
+        return orderDetailMapper.toDTO(orderDetailRepository.save(orderDetailMapper.toEntity(newOrderDetailDTO)));
     }
 
     // Find
@@ -40,19 +40,19 @@ public class OrderDetailService {
     }
 
     //Save
-    public OrderDetailDTO save(OrderDetail newOrderDetail) {
-        return orderDetailMapper.toDTO(orderDetailRepository.save(newOrderDetail));
+    public OrderDetailDTO save(OrderDetailDTO newOrderDetailDTO) {
+        return orderDetailMapper.toDTO(orderDetailRepository.save(orderDetailMapper.toEntity(newOrderDetailDTO)));
     }
 
     //update
     @PutMapping("/orderDetails")
-    public OrderDetailDTO update(@RequestBody OrderDetail orderDetail, @PathVariable Long id) {
+    public OrderDetailDTO update(@RequestBody OrderDetailDTO orderDetailDTO, @PathVariable Long id) {
 
         return orderDetailMapper.toDTO(orderDetailRepository.findById(id)
                 .map(x -> {
-                    x.setId(orderDetail.getId());
-                    x.setName(orderDetail.getName());
-                    x.setTaxStatus(orderDetail.getTaxStatus());
+                    x.setId(orderDetailDTO.getId());
+                    x.setName(orderDetailDTO.getName());
+                    x.setTaxStatus(orderDetailDTO.getTaxStatus());
                     return orderDetailRepository.save(x);
                 })
                 .orElseThrow(() -> new OrderDetailNotFoundException(id)));

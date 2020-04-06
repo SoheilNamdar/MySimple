@@ -27,9 +27,9 @@ public class WireTransferService {
     }
 
     // Save
-    public WireTransferDTO newWireTransfer(WireTransfer newWireTransfer) {
+    public WireTransferDTO newWireTransfer(WireTransferDTO newWireTransfer) {
 
-        return wireTransferMapper.toDTO(wireTransferRepository.save(newWireTransfer));
+        return wireTransferMapper.toDTO(wireTransferRepository.save(wireTransferMapper.toEntity(newWireTransfer)));
     }
 
     // Find
@@ -39,13 +39,13 @@ public class WireTransferService {
     }
 
     //Save
-    public WireTransferDTO save(WireTransfer newWireTransfer) {
-        return wireTransferMapper.toDTO(wireTransferRepository.save(newWireTransfer));
+    public WireTransferDTO save(WireTransferDTO newWireTransfer) {
+        return wireTransferMapper.toDTO(wireTransferRepository.save(wireTransferMapper.toEntity(newWireTransfer)));
     }
 
     //update
     @PutMapping("/wireTransfers")
-    public WireTransferDTO update(@RequestBody WireTransfer wireTransfer, @PathVariable Long id) {
+    public WireTransferDTO update(@RequestBody WireTransferDTO wireTransfer, @PathVariable Long id) {
 
         return wireTransferMapper.toDTO(wireTransferRepository.findById(id)
                 .map(x -> {
