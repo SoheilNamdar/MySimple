@@ -9,27 +9,6 @@ public class BookDTO {
     private String author;
     private BigDecimal price;
 
-    // avoid this "No default constructor for entity"
-    public BookDTO() {
-    }
-
-    public BookDTO(Long id, String name, String author, BigDecimal price) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.price = price;
-    }
-
-    public BookDTO(String name, String author, BigDecimal price) {
-        this.name = name;
-        this.author = author;
-        this.price = price;
-    }
-
-    public BookDTO(String name) {
-        this.name=name;
-    }
-
     public Long getId() {
         return id;
     }
@@ -62,13 +41,4 @@ public class BookDTO {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
