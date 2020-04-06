@@ -1,20 +1,9 @@
-package com.mkyong.Entity;
+package com.mkyong.DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+public class ItemDTO {
 
-@Entity
-public class Item {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "description")
     private String description;
-    @Column(name = "weight")
     private float weight;
 
     public Long getId() {

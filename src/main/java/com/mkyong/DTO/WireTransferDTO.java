@@ -1,21 +1,9 @@
-package com.mkyong.Entity;
+package com.mkyong.DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
+public class WireTransferDTO {
 
-@Entity
-public class WireTransfer {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "bankID", unique = true)
     private String bankID;
-    @Column(name = "bank_name", unique = true)
     private String bankName;
 
     public Long getId() {
@@ -41,5 +29,4 @@ public class WireTransfer {
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
-
 }

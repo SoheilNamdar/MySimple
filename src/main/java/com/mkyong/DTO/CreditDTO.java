@@ -1,7 +1,5 @@
 package com.mkyong.DTO;
 
-import javax.persistence.Column;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class CreditDTO {
@@ -27,9 +25,7 @@ public class CreditDTO {
         this.number = number;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
 
     public void setType(String type) {
         this.type = type;

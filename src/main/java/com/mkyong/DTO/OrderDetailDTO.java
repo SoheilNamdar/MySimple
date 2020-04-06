@@ -1,21 +1,9 @@
-package com.mkyong.Entity;
+package com.mkyong.DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.math.BigDecimal;
+public class OrderDetailDTO {
 
-@Entity
-public class OrderDetail {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "name")
     private int name;
-    @Column(name = "tax_status", unique = true)
     private String taxStatus;
 
     public Long getId() {
@@ -41,5 +29,4 @@ public class OrderDetail {
     public void setTaxStatus(String taxStatus) {
         this.taxStatus = taxStatus;
     }
-
 }

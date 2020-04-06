@@ -1,25 +1,11 @@
-package com.mkyong.Entity;
+package com.mkyong.DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.math.BigDecimal;
+public class CustomerDTO {
 
-@Entity
-public class Customer {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "delivery_address", unique = true)
     private String deliveryAddress;
-    @Column(name = "contact", unique = true)
     private String contact;
-    @Column(name = "active")
     private boolean active;
 
     public Long getId() {
@@ -41,6 +27,7 @@ public class Customer {
     public String getDeliveryAddress() { return deliveryAddress; }
 
     public void setDeliveryAddress(String deliveryAddress) { this.deliveryAddress = deliveryAddress; }
+
     public String getContact() { return contact; }
 
     public void setContact(String contact) {
@@ -54,5 +41,4 @@ public class Customer {
     public void setActive(boolean active) {
         this.active = active;
     }
-
 }

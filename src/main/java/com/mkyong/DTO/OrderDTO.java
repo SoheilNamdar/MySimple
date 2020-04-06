@@ -1,19 +1,12 @@
-package com.mkyong.Entity;
+package com.mkyong.DTO;
 
 import com.mkyong.Entity.Enum.OrderStatus;
-import javax.persistence.*;
 import java.time.ZonedDateTime;
 
-@Entity
-public class Order {
+public class OrderDTO {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
     private Long id;
-    @Column(name = "date")
     private ZonedDateTime date;
-    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     public Long getId() {
