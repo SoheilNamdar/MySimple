@@ -1,11 +1,19 @@
 package com.mkyong.Service;
 
 import com.mkyong.DTO.CreditDTO;
+import com.mkyong.DTO.CustomerDTO;
+import com.mkyong.Entity.Credit;
+import com.mkyong.Entity.Customer;
 import com.mkyong.Mapper.CreditMapperMPS;
 import com.mkyong.Repository.CreditRepository;
 import com.mkyong.error.NotFoundException.CreditNotFoundException;
+import com.mkyong.error.NotFoundException.CustomerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.List;
 
 @Service
@@ -34,20 +42,24 @@ public class CreditService {
                 .orElseThrow(() -> new CreditNotFoundException(id)));
     }
 
-    // Save or update
-    public CreditDTO saveOrUpdate(CreditDTO newCreditDTO, Long id) {
+    //Save
+    public CreditDTO save(Credit newCredit) {
+        return creditMapper.toDTO(creditRepository.save(newCredit));
+    }
 
-        return creditRepository.findById(id)
+    //update
+    @PutMapping("/credits")
+    public CreditDTO update(@RequestBody Credit credit, @PathVariable Long id) {
+
+        return creditMapper.toDTO(creditRepository.findById(id)
                 .map(x -> {
-                    x.setNumber(newCreditDTO.getNumber());
-                    x.setType(newCreditDTO.getType());
-                    x.setExpireDate(newCreditDTO.getExpireDate());
-                    return creditMapper.toDTO(creditRepository.save(x));
+                    x.setId(credit.getId());
+                    x.setNumber(credit.getNumber());
+                    x.setType(credit.getType());
+                    x.setExpireDate(credit.getExpireDate());
+                    return creditRepository.save(x);
                 })
-                .orElseGet(() -> {
-                    newCreditDTO.setId(id);
-                    return creditMapper.toDTO(creditRepository.save(creditMapper.toEntity(newCreditDTO)));
-                });
+                .orElseThrow(() -> new CreditNotFoundException(id)));
     }
 
     //delete
