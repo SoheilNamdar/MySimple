@@ -29,8 +29,8 @@ public class OrderController {
     }
 
     // Find
-    @GetMapping("/orders")
-    public OrderDTO findOne(@RequestParam Long id) {
+    @GetMapping("/orders/{id}")
+    public OrderDTO findOne(@PathVariable Long id) {
         return orderService.findOne(id);
     }
 

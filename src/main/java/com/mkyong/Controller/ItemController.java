@@ -29,8 +29,8 @@ public class ItemController {
     }
 
     // Find
-    @GetMapping("/items")
-    public ItemDTO findOne(@RequestParam Long id) {
+    @GetMapping("/items/{id}")
+    public ItemDTO findOne(@PathVariable Long id) {
         return itemService.findOne(id);
     }
 

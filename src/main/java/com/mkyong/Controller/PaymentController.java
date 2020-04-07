@@ -29,8 +29,8 @@ public class PaymentController {
     }
 
     // Find
-    @GetMapping("/payments")
-    public PaymentDTO findOne(@RequestParam Long id) {
+    @GetMapping("/payments/{id}")
+    public PaymentDTO findOne(@PathVariable Long id) {
         return paymentService.findOne(id);
     }
 

@@ -31,8 +31,8 @@ public class BookController {
 
     // Find
     //todo fix it
-    @GetMapping("/books")
-    public BookDTO findOne(@RequestParam Long id) {
+    @GetMapping("/books/{id}")
+    public BookDTO findOne(@PathVariable Long id) {
         return bookService.findOne(id);
     }
 

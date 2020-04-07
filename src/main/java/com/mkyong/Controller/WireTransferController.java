@@ -29,8 +29,8 @@ public class WireTransferController {
     }
 
     // Find
-    @GetMapping("/wireTransfers")
-    public WireTransferDTO findOne(@RequestParam Long id) {
+    @GetMapping("/wireTransfers/{id}")
+    public WireTransferDTO findOne(@PathVariable Long id) {
         return wireTransferService.findOne(id);
     }
 

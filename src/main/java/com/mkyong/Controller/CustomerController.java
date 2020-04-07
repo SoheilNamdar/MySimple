@@ -29,8 +29,8 @@ public class CustomerController {
     }
 
     // Find
-    @GetMapping("/customers")
-    public CustomerDTO findOne(@RequestParam Long id) {
+    @GetMapping("/customers/{id}")
+    public CustomerDTO findOne(@PathVariable Long id) {
         return customerService.findOne(id);
     }
 
