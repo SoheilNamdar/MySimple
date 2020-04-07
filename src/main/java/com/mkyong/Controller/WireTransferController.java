@@ -30,7 +30,7 @@ public class WireTransferController {
 
     // Find
     @GetMapping("/items")
-    public WireTransferDTO findOne(@RequestParam("id") Long id) {
+    public WireTransferDTO findOne(@RequestParam Long id) {
         return itemService.findOne(id);
     }
 
@@ -43,14 +43,14 @@ public class WireTransferController {
 
     //update
     @PutMapping("/items")
-    public WireTransferDTO update(@RequestBody WireTransferDTO newWireTransferDTO, @RequestParam("id") Long id) {
+    public WireTransferDTO update(@RequestBody WireTransferDTO newWireTransferDTO, @RequestParam Long id) {
 
         return itemService.update(newWireTransferDTO,id);
     }
 
     //delete
     @DeleteMapping("/items")
-    void deleteWireTransfer(@RequestParam("id") Long id) {
+    void deleteWireTransfer(@RequestParam Long id) {
         itemService.deleteWireTransfer(id);
     }
 

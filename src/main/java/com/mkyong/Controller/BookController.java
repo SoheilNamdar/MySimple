@@ -32,15 +32,21 @@ public class BookController {
     // Find
     //todo fix it
     @GetMapping("/books")
-    public BookDTO findOne(@RequestBody Long id) {
+    public BookDTO findOne(@RequestParam Long id) {
         return bookService.findOne(id);
     }
 
     // Save or update
     @PutMapping("/books")
-    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @RequestBody Long id) {
+    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @RequestParam Long id) {
 
         return bookService.saveOrUpdate(newBookDTO,id);
+    }
+
+    //delete
+    @DeleteMapping("/books")
+    void deleteBook(@RequestParam Long id) {
+        bookService.deleteBook(id);
     }
 
     /* update author only
@@ -50,11 +56,4 @@ public class BookController {
         return bookService.patch(update, id);
 
     }*/
-
-    //delete
-    @DeleteMapping("/books/{id}")
-    void deleteBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
-    }
-
 }

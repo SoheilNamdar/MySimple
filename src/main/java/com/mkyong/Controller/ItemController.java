@@ -30,7 +30,7 @@ public class ItemController {
 
     // Find
     @GetMapping("/items")
-    public ItemDTO findOne(@RequestParam("id") Long id) {
+    public ItemDTO findOne(@RequestParam Long id) {
         return itemService.findOne(id);
     }
 
@@ -43,14 +43,14 @@ public class ItemController {
 
     //update
     @PutMapping("/items")
-    public ItemDTO update(@RequestBody ItemDTO newItemDTO, @RequestParam("id") Long id) {
+    public ItemDTO update(@RequestBody ItemDTO newItemDTO, @RequestParam Long id) {
 
         return itemService.update(newItemDTO,id);
     }
 
     //delete
     @DeleteMapping("/items")
-    void deleteItem(@RequestParam("id") Long id) {
+    void deleteItem(@RequestParam Long id) {
         itemService.deleteItem(id);
     }
 

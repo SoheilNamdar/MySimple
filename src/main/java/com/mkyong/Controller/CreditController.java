@@ -30,7 +30,7 @@ public class CreditController {
 
     // Find
     @GetMapping("/credits")
-    public CreditDTO findOne(@RequestParam("id") Long id) {
+    public CreditDTO findOne(@RequestParam Long id) {
         return creditService.findOne(id);
     }
 
@@ -50,7 +50,7 @@ public class CreditController {
 
     //delete
     @DeleteMapping("/credits")
-    void deleteCredit(@RequestParam("id") Long id) {
+    void deleteCredit(@RequestParam Long id) {
         creditService.deleteCredit(id);
     }
 }

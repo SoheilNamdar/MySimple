@@ -30,7 +30,7 @@ public class CustomerController {
 
     // Find
     @GetMapping("/customers")
-    public CustomerDTO findOne(@RequestParam("id") Long id) {
+    public CustomerDTO findOne(@RequestParam Long id) {
         return customerService.findOne(id);
     }
 
@@ -50,7 +50,7 @@ public class CustomerController {
 
     //delete
     @DeleteMapping("/customers")
-    void deleteCustomer(@RequestParam("id") Long id) {
+    void deleteCustomer(@RequestParam Long id) {
         customerService.deleteCustomer(id);
     }
 

@@ -30,7 +30,7 @@ public class OrderController {
 
     // Find
     @GetMapping("/items")
-    public OrderDTO findOne(@RequestParam("id") Long id) {
+    public OrderDTO findOne(@RequestParam Long id) {
         return itemService.findOne(id);
     }
 
@@ -43,14 +43,14 @@ public class OrderController {
 
     //update
     @PutMapping("/items")
-    public OrderDTO update(@RequestBody OrderDTO newOrderDTO, @RequestParam("id") Long id) {
+    public OrderDTO update(@RequestBody OrderDTO newOrderDTO, @RequestParam Long id) {
 
         return itemService.update(newOrderDTO,id);
     }
 
     //delete
     @DeleteMapping("/items")
-    void deleteOrder(@RequestParam("id") Long id) {
+    void deleteOrder(@RequestParam Long id) {
         itemService.deleteOrder(id);
     }
 
