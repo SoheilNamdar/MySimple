@@ -30,6 +30,7 @@ public class BookController {
     }
 
     // Find
+    //todo fix it
     @GetMapping("/books")
     public BookDTO findOne(@RequestBody Long id) {
         return bookService.findOne(id);
