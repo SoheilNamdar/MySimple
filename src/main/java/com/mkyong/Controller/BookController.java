@@ -37,8 +37,8 @@ public class BookController {
     }
 
     // Save or update
-    @PutMapping("/books")
-    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @RequestParam Long id) {
+    @PutMapping("/books/{id}")
+    public BookDTO saveOrUpdate(@RequestBody BookDTO newBookDTO, @PathVariable Long id) {
 
         return bookService.saveOrUpdate(newBookDTO,id);
     }
