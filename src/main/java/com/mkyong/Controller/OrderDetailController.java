@@ -35,7 +35,7 @@ public class OrderDetailController {
     }
 
     // Save
-    @PutMapping("/orderDetails")
+    @PutMapping("/orderDetail")
     public OrderDetailDTO save(@RequestBody OrderDetailDTO newOrderDetailDTO) {
 
         return orderDetailService.save(newOrderDetailDTO);

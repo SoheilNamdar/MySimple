@@ -35,7 +35,7 @@ public class WireTransferController {
     }
 
     // Save
-    @PutMapping("/wireTransfers")
+    @PutMapping("/wireTransfer")
     public WireTransferDTO save(@RequestBody WireTransferDTO newWireTransferDTO) {
 
         return wireTransferService.save(newWireTransferDTO);

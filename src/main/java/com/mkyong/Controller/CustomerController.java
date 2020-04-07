@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     // Save
-    @PutMapping("/customers")
+    @PutMapping("/customer")
     public CustomerDTO save(@RequestBody CustomerDTO newCustomerDTO) {
 
         return customerService.save(newCustomerDTO);

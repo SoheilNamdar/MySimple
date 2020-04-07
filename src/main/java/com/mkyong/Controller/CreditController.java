@@ -35,7 +35,7 @@ public class CreditController {
     }
 
     // Save
-    @PutMapping("/credits")
+    @PutMapping("/credit")
     public CreditDTO save(@RequestBody CreditDTO newCreditDTO) {
 
         return creditService.save(newCreditDTO);

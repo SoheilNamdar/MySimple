@@ -35,7 +35,7 @@ public class PaymentController {
     }
 
     // Save
-    @PutMapping("/payments")
+    @PutMapping("/payment")
     public PaymentDTO save(@RequestBody PaymentDTO newPaymentDTO) {
 
         return paymentService.save(newPaymentDTO);

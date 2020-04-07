@@ -35,7 +35,7 @@ public class ItemController {
     }
 
     // Save
-    @PutMapping("/items")
+    @PutMapping("/item")
     public ItemDTO save(@RequestBody ItemDTO newItemDTO) {
 
         return itemService.save(newItemDTO);
