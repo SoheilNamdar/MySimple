@@ -50,7 +50,7 @@ public class CreditController {
 
     //delete
     @DeleteMapping("/credits")
-    void deleteCredit(@RequestParam Long id) {
+    void deleteCredit(@PathVariable("id") Long id) {
         creditService.deleteCredit(id);
     }
 }

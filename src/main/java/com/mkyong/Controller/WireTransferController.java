@@ -12,46 +12,46 @@ import java.util.List;
 public class WireTransferController {
 
     @Autowired
-    private WireTransferService itemService;
+    private WireTransferService wireTransferService;
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/wireTransfers")
     public List<WireTransferDTO> findAll() {
-        return itemService.findAll();
+        return wireTransferService.findAll();
     }
 
     // Save
-    @PostMapping("/items")
+    @PostMapping("/wireTransfers")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public WireTransferDTO newWireTransfer(@RequestBody WireTransferDTO newWireTransferDTO) {
-        return itemService.newWireTransfer(newWireTransferDTO);
+        return wireTransferService.newWireTransfer(newWireTransferDTO);
     }
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/wireTransfers")
     public WireTransferDTO findOne(@RequestParam Long id) {
-        return itemService.findOne(id);
+        return wireTransferService.findOne(id);
     }
 
     // Save
-    @PutMapping("/items")
+    @PutMapping("/wireTransfers")
     public WireTransferDTO save(@RequestBody WireTransferDTO newWireTransferDTO) {
 
-        return itemService.save(newWireTransferDTO);
+        return wireTransferService.save(newWireTransferDTO);
     }
 
     //update
-    @PutMapping("/items")
+    @PutMapping("/wireTransfers")
     public WireTransferDTO update(@RequestBody WireTransferDTO newWireTransferDTO, @RequestParam Long id) {
 
-        return itemService.update(newWireTransferDTO,id);
+        return wireTransferService.update(newWireTransferDTO,id);
     }
 
     //delete
-    @DeleteMapping("/items")
+    @DeleteMapping("/wireTransfers")
     void deleteWireTransfer(@RequestParam Long id) {
-        itemService.deleteWireTransfer(id);
+        wireTransferService.deleteWireTransfer(id);
     }
 
 }

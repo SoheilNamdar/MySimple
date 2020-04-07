@@ -12,46 +12,46 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderService itemService;
+    private OrderService orderService;
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/orders")
     public List<OrderDTO> findAll() {
-        return itemService.findAll();
+        return orderService.findAll();
     }
 
     // Save
-    @PostMapping("/items")
+    @PostMapping("/orders")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO newOrder(@RequestBody OrderDTO newOrderDTO) {
-        return itemService.newOrder(newOrderDTO);
+        return orderService.newOrder(newOrderDTO);
     }
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/orders")
     public OrderDTO findOne(@RequestParam Long id) {
-        return itemService.findOne(id);
+        return orderService.findOne(id);
     }
 
     // Save
-    @PutMapping("/items")
+    @PutMapping("/orders")
     public OrderDTO save(@RequestBody OrderDTO newOrderDTO) {
 
-        return itemService.save(newOrderDTO);
+        return orderService.save(newOrderDTO);
     }
 
     //update
-    @PutMapping("/items")
+    @PutMapping("/orders")
     public OrderDTO update(@RequestBody OrderDTO newOrderDTO, @RequestParam Long id) {
 
-        return itemService.update(newOrderDTO,id);
+        return orderService.update(newOrderDTO,id);
     }
 
     //delete
-    @DeleteMapping("/items")
+    @DeleteMapping("/orders")
     void deleteOrder(@RequestParam Long id) {
-        itemService.deleteOrder(id);
+        orderService.deleteOrder(id);
     }
 
 }

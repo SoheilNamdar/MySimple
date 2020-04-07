@@ -12,46 +12,46 @@ import java.util.List;
 public class PaymentController {
 
     @Autowired
-    private PaymentService itemService;
+    private PaymentService paymentService;
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/payments")
     public List<PaymentDTO> findAll() {
-        return itemService.findAll();
+        return paymentService.findAll();
     }
 
     // Save
-    @PostMapping("/items")
+    @PostMapping("/payments")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public PaymentDTO newPayment(@RequestBody PaymentDTO newPaymentDTO) {
-        return itemService.newPayment(newPaymentDTO);
+        return paymentService.newPayment(newPaymentDTO);
     }
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/payments")
     public PaymentDTO findOne(@RequestParam Long id) {
-        return itemService.findOne(id);
+        return paymentService.findOne(id);
     }
 
     // Save
-    @PutMapping("/items")
+    @PutMapping("/payments")
     public PaymentDTO save(@RequestBody PaymentDTO newPaymentDTO) {
 
-        return itemService.save(newPaymentDTO);
+        return paymentService.save(newPaymentDTO);
     }
 
     //update
-    @PutMapping("/items")
+    @PutMapping("/payments")
     public PaymentDTO update(@RequestBody PaymentDTO newPaymentDTO, @RequestParam Long id) {
 
-        return itemService.update(newPaymentDTO,id);
+        return paymentService.update(newPaymentDTO,id);
     }
 
     //delete
-    @DeleteMapping("/items")
+    @DeleteMapping("/payments")
     void deletePayment(@RequestParam Long id) {
-        itemService.deletePayment(id);
+        paymentService.deletePayment(id);
     }
 
 }

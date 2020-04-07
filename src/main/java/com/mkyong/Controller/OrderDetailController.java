@@ -12,46 +12,46 @@ import java.util.List;
 public class OrderDetailController {
 
     @Autowired
-    private OrderDetailService itemService;
+    private OrderDetailService orderDetailService;
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/orderDetails")
     public List<OrderDetailDTO> findAll() {
-        return itemService.findAll();
+        return orderDetailService.findAll();
     }
 
     // Save
-    @PostMapping("/items")
+    @PostMapping("/orderDetails")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDetailDTO newOrderDetail(@RequestBody OrderDetailDTO newOrderDetailDTO) {
-        return itemService.newOrderDetail(newOrderDetailDTO);
+        return orderDetailService.newOrderDetail(newOrderDetailDTO);
     }
 
     // Find
-    @GetMapping("/items")
+    @GetMapping("/orderDetails")
     public OrderDetailDTO findOne(@RequestParam Long id) {
-        return itemService.findOne(id);
+        return orderDetailService.findOne(id);
     }
 
     // Save
-    @PutMapping("/items")
+    @PutMapping("/orderDetails")
     public OrderDetailDTO save(@RequestBody OrderDetailDTO newOrderDetailDTO) {
 
-        return itemService.save(newOrderDetailDTO);
+        return orderDetailService.save(newOrderDetailDTO);
     }
 
     //update
-    @PutMapping("/items")
+    @PutMapping("/orderDetails")
     public OrderDetailDTO update(@RequestBody OrderDetailDTO newOrderDetailDTO, @RequestParam Long id) {
 
-        return itemService.update(newOrderDetailDTO,id);
+        return orderDetailService.update(newOrderDetailDTO,id);
     }
 
     //delete
-    @DeleteMapping("/items")
+    @DeleteMapping("/orderDetails")
     void deleteOrderDetail(@RequestParam Long id) {
-        itemService.deleteOrderDetail(id);
+        orderDetailService.deleteOrderDetail(id);
     }
 
 }
