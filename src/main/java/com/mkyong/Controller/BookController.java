@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class BookController {
     @PostMapping("/books")
     //return 201 instead of 200
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO newBook(@RequestBody BookDTO newBookDTO) {
+    public BookDTO newBook(@Valid @RequestBody BookDTO newBookDTO) {
         return bookService.newBook(newBookDTO);
     }
 

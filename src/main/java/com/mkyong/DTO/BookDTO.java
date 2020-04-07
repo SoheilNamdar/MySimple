@@ -1,10 +1,12 @@
 package com.mkyong.DTO;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class BookDTO {
 
     private Long id;
+    @NotNull
     private String name;
     private String author;
     private BigDecimal price;
