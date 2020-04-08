@@ -23,12 +23,6 @@ public class OrderDetailService {
         return orderDetailMapper.toDTO(orderDetailRepository.findAll());
     }
 
-    // Save
-    public OrderDetailDTO newOrderDetail(OrderDetailDTO newOrderDetailDTO) {
-
-        return orderDetailMapper.toDTO(orderDetailRepository.save(orderDetailMapper.toEntity(newOrderDetailDTO)));
-    }
-
     // Find
     public OrderDetailDTO findOne(Long id) {
         return orderDetailMapper.toDTO(orderDetailRepository.findById(id)

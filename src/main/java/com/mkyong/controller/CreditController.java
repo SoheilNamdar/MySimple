@@ -20,14 +20,6 @@ public class CreditController {
         return creditService.findAll();
     }
 
-    // Save
-    @PostMapping("/credits")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public CreditDTO newCredit(@RequestBody CreditDTO newCreditDTO) {
-        return creditService.newCredit(newCreditDTO);
-    }
-
     // Find
     @GetMapping("/credits/{id}")
     public CreditDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,7 @@ public class CreditController {
     }
 
     // Save
-    @PutMapping("/credit")
+    @PostMapping("/credits")
     public CreditDTO save(@RequestBody CreditDTO newCreditDTO) {
 
         return creditService.save(newCreditDTO);

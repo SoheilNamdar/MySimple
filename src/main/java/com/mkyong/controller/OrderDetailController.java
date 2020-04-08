@@ -20,14 +20,6 @@ public class OrderDetailController {
         return orderDetailService.findAll();
     }
 
-    // Save
-    @PostMapping("/orderDetails")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderDetailDTO newOrderDetail(@RequestBody OrderDetailDTO newOrderDetailDTO) {
-        return orderDetailService.newOrderDetail(newOrderDetailDTO);
-    }
-
     // Find
     @GetMapping("/orderDetails/{id}")
     public OrderDetailDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class OrderDetailController {
     }
 
     // Save
-    @PutMapping("/orderDetail")
+    @PostMapping("/orderDetails")
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderDetailDTO save(@RequestBody OrderDetailDTO newOrderDetailDTO) {
 
         return orderDetailService.save(newOrderDetailDTO);

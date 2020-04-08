@@ -23,12 +23,6 @@ public class CustomerService {
         return customerMapper.toDTO(customerRepository.findAll());
     }
 
-    // Save
-    public CustomerDTO newCustomer(CustomerDTO newCustomerDTO) {
-
-        return customerMapper.toDTO(customerRepository.save(customerMapper.toEntity(newCustomerDTO)));
-    }
-
     // Find
     public CustomerDTO findOne(Long id) {
         return customerMapper.toDTO(customerRepository.findById(id)

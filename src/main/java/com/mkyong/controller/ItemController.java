@@ -20,14 +20,6 @@ public class ItemController {
         return itemService.findAll();
     }
 
-    // Save
-    @PostMapping("/items")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public ItemDTO newItem(@RequestBody ItemDTO newItemDTO) {
-        return itemService.newItem(newItemDTO);
-    }
-
     // Find
     @GetMapping("/items/{id}")
     public ItemDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class ItemController {
     }
 
     // Save
-    @PutMapping("/item")
+    @PostMapping("/items")
+    @ResponseStatus(HttpStatus.CREATED)
     public ItemDTO save(@RequestBody ItemDTO newItemDTO) {
 
         return itemService.save(newItemDTO);

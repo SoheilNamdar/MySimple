@@ -23,12 +23,6 @@ public class WireTransferService {
         return wireTransferMapper.toDTO(wireTransferRepository.findAll());
     }
 
-    // Save
-    public WireTransferDTO newWireTransfer(WireTransferDTO newWireTransfer) {
-
-        return wireTransferMapper.toDTO(wireTransferRepository.save(wireTransferMapper.toEntity(newWireTransfer)));
-    }
-
     // Find
     public WireTransferDTO findOne(Long id) {
         return wireTransferMapper.toDTO(wireTransferRepository.findById(id)

@@ -1,6 +1,5 @@
 package com.mkyong.service;
 
-
 import com.mkyong.dto.OrderDTO;
 import com.mkyong.mapper.OrderMapperMPS;
 import com.mkyong.repository.OrderRepository;
@@ -22,12 +21,6 @@ public class OrderService {
     // Find
     public List<OrderDTO> findAll() {
         return orderMapper.toDTO(orderRepository.findAll());
-    }
-
-    // Save
-    public OrderDTO newOrder(OrderDTO newOrder) {
-
-        return orderMapper.toDTO(orderRepository.save(orderMapper.toEntity(newOrder)));
     }
 
     // Find

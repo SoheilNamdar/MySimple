@@ -23,12 +23,6 @@ public class ItemService {
         return itemMapper.toDTO(itemRepository.findAll());
     }
 
-    // Save
-    public ItemDTO newItem(ItemDTO newItemDTO) {
-
-        return itemMapper.toDTO(itemRepository.save(itemMapper.toEntity(newItemDTO)));
-    }
-
     // Find
     public ItemDTO findOne(Long id) {
         return itemMapper.toDTO(itemRepository.findById(id)

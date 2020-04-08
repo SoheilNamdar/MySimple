@@ -23,12 +23,6 @@ public class CreditService {
         return creditMapper.toDTO(creditRepository.findAll());
     }
 
-    // Save
-    public CreditDTO newCredit(CreditDTO newCreditDTO) {
-
-        return creditMapper.toDTO(creditRepository.save(creditMapper.toEntity(newCreditDTO)));
-    }
-
     // Find
     public CreditDTO findOne(Long id) {
         return creditMapper.toDTO(creditRepository.findById(id)

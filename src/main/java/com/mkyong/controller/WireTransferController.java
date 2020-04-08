@@ -20,14 +20,6 @@ public class WireTransferController {
         return wireTransferService.findAll();
     }
 
-    // Save
-    @PostMapping("/wireTransfers")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public WireTransferDTO newWireTransfer(@RequestBody WireTransferDTO newWireTransferDTO) {
-        return wireTransferService.newWireTransfer(newWireTransferDTO);
-    }
-
     // Find
     @GetMapping("/wireTransfers/{id}")
     public WireTransferDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class WireTransferController {
     }
 
     // Save
-    @PutMapping("/wireTransfer")
+    @PostMapping("/wireTransfers")
+    @ResponseStatus(HttpStatus.CREATED)
     public WireTransferDTO save(@RequestBody WireTransferDTO newWireTransferDTO) {
 
         return wireTransferService.save(newWireTransferDTO);

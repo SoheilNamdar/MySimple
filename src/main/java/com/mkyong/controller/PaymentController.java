@@ -20,14 +20,6 @@ public class PaymentController {
         return paymentService.findAll();
     }
 
-    // Save
-    @PostMapping("/payments")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public PaymentDTO newPayment(@RequestBody PaymentDTO newPaymentDTO) {
-        return paymentService.newPayment(newPaymentDTO);
-    }
-
     // Find
     @GetMapping("/payments/{id}")
     public PaymentDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class PaymentController {
     }
 
     // Save
-    @PutMapping("/payment")
+    @PostMapping("/payments")
+    @ResponseStatus(HttpStatus.CREATED)
     public PaymentDTO save(@RequestBody PaymentDTO newPaymentDTO) {
 
         return paymentService.save(newPaymentDTO);

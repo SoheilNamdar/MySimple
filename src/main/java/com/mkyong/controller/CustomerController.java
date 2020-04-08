@@ -20,14 +20,6 @@ public class CustomerController {
         return customerService.findAll();
     }
 
-    // Save
-    @PostMapping("/customers")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDTO newCustomer(@RequestBody CustomerDTO newCustomerDTO) {
-        return customerService.newCustomer(newCustomerDTO);
-    }
-
     // Find
     @GetMapping("/customers/{id}")
     public CustomerDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class CustomerController {
     }
 
     // Save
-    @PutMapping("/customer")
+    @PostMapping("/customers")
+    @ResponseStatus(HttpStatus.CREATED)
     public CustomerDTO save(@RequestBody CustomerDTO newCustomerDTO) {
 
         return customerService.save(newCustomerDTO);

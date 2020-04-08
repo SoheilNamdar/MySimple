@@ -23,12 +23,6 @@ public class PaymentService {
         return paymentMapper.toDTO(paymentRepository.findAll());
     }
 
-    // Save
-    public PaymentDTO newPayment(PaymentDTO newPaymentDTO) {
-
-        return paymentMapper.toDTO(paymentRepository.save(paymentMapper.toEntity(newPaymentDTO)));
-    }
-
     // Find
     public PaymentDTO findOne(Long id) {
         return paymentMapper.toDTO(paymentRepository.findById(id)

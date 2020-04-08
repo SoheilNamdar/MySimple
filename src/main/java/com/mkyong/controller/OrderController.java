@@ -20,14 +20,6 @@ public class OrderController {
         return orderService.findAll();
     }
 
-    // Save
-    @PostMapping("/orders")
-    //return 201 instead of 200
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderDTO newOrder(@RequestBody OrderDTO newOrderDTO) {
-        return orderService.newOrder(newOrderDTO);
-    }
-
     // Find
     @GetMapping("/orders/{id}")
     public OrderDTO findOne(@PathVariable Long id) {
@@ -35,7 +27,8 @@ public class OrderController {
     }
 
     // Save
-    @PutMapping("/order")
+    @PostMapping("/orders")
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO save(@RequestBody OrderDTO newOrderDTO) {
 
         return orderService.save(newOrderDTO);
