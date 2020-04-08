@@ -1,7 +1,7 @@
 package com.mkyong;
 
-import com.mkyong.Entity.Book;
-import com.mkyong.Repository.BookRepository;
+import com.mkyong.entity.Book;
+import com.mkyong.repository.BookRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
