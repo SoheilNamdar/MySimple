@@ -36,9 +36,9 @@ public class OrderController {
 
     //update
     @PutMapping("/orders")
-    public OrderDTO update(@RequestBody OrderDTO newOrderDTO, @RequestParam Long id) {
+    public OrderDTO update(@RequestBody OrderDTO orderDTO) {
 
-        return orderService.update(newOrderDTO,id);
+        return orderService.update(orderDTO,new OrderDTO().getId());
     }
 
     //delete

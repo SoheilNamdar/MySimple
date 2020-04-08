@@ -36,9 +36,9 @@ public class WireTransferController {
 
     //update
     @PutMapping("/wireTransfers")
-    public WireTransferDTO update(@RequestBody WireTransferDTO newWireTransferDTO, @RequestParam Long id) {
+    public WireTransferDTO update(@RequestBody WireTransferDTO wireTransferDTO) {
 
-        return wireTransferService.update(newWireTransferDTO,id);
+        return wireTransferService.update(wireTransferDTO,new WireTransferDTO().getId());
     }
 
     //delete

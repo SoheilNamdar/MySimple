@@ -36,9 +36,9 @@ public class PaymentController {
 
     //update
     @PutMapping("/payments")
-    public PaymentDTO update(@RequestBody PaymentDTO newPaymentDTO, @RequestParam Long id) {
+    public PaymentDTO update(@RequestBody PaymentDTO paymentDTO) {
 
-        return paymentService.update(newPaymentDTO,id);
+        return paymentService.update(paymentDTO,new PaymentDTO().getId());
     }
 
     //delete

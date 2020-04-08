@@ -35,9 +35,9 @@ public class CreditController {
 
     //update
     @PutMapping("/credits")
-    public CreditDTO update(@RequestBody CreditDTO newCreditDTO, @RequestParam Long id) {
+    public CreditDTO update(@RequestBody CreditDTO creditDTO) {
 
-        return creditService.update(newCreditDTO,id);
+        return creditService.update(creditDTO,new CreditDTO().getId());
     }
 
     //delete

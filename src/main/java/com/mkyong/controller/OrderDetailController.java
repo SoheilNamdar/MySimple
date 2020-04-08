@@ -36,9 +36,9 @@ public class OrderDetailController {
 
     //update
     @PutMapping("/orderDetails")
-    public OrderDetailDTO update(@RequestBody OrderDetailDTO newOrderDetailDTO, @RequestParam Long id) {
+    public OrderDetailDTO update(@RequestBody OrderDetailDTO orderDetailDTO) {
 
-        return orderDetailService.update(newOrderDetailDTO,id);
+        return orderDetailService.update(orderDetailDTO,new OrderDetailDTO().getId());
     }
 
     //delete

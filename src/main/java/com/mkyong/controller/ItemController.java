@@ -36,9 +36,9 @@ public class ItemController {
 
     //update
     @PutMapping("/items")
-    public ItemDTO update(@RequestBody ItemDTO newItemDTO, @RequestParam Long id) {
+    public ItemDTO update(@RequestBody ItemDTO itemDTO) {
 
-        return itemService.update(newItemDTO,id);
+        return itemService.update(itemDTO,new ItemDTO().getId());
     }
 
     //delete

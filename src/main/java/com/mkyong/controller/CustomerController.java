@@ -36,9 +36,9 @@ public class CustomerController {
 
     //update
     @PutMapping("/customers")
-    public CustomerDTO update(@RequestBody CustomerDTO newCustomerDTO, @RequestParam Long id) {
+    public CustomerDTO update(@RequestBody CustomerDTO customerDTO) {
 
-        return customerService.update(newCustomerDTO,id);
+        return customerService.update(customerDTO,new CustomerDTO().getId());
     }
 
     //delete
