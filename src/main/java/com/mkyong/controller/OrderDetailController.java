@@ -43,7 +43,7 @@ public class OrderDetailController {
 
     //delete
     @DeleteMapping("/orderDetails")
-    void deleteOrderDetail(@RequestParam Long id) {
+    public void deleteOrderDetail(@RequestParam Long id) {
         orderDetailService.deleteOrderDetail(id);
     }
 

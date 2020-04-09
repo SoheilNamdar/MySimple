@@ -43,7 +43,7 @@ public class ItemController {
 
     //delete
     @DeleteMapping("/items")
-    void deleteItem(@RequestParam Long id) {
+    public void deleteItem(@RequestParam Long id) {
         itemService.deleteItem(id);
     }
 

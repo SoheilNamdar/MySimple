@@ -43,7 +43,7 @@ public class WireTransferController {
 
     //delete
     @DeleteMapping("/wireTransfers")
-    void deleteWireTransfer(@RequestParam Long id) {
+    public void deleteWireTransfer(@RequestParam Long id) {
         wireTransferService.deleteWireTransfer(id);
     }
 

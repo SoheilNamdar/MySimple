@@ -42,7 +42,7 @@ public class CreditController {
 
     //delete
     @DeleteMapping("/credits")
-    void deleteCredit(@RequestParam Long id) {
+    public void deleteCredit(@RequestParam Long id) {
         creditService.deleteCredit(id);
     }
 }

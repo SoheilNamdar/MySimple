@@ -43,7 +43,7 @@ public class PaymentController {
 
     //delete
     @DeleteMapping("/payments")
-    void deletePayment(@RequestParam Long id) {
+    public void deletePayment(@RequestParam Long id) {
         paymentService.deletePayment(id);
     }
 
