@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class CustomerController {
     // Save
     @PostMapping("/customers")
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerDTO save(@RequestBody CustomerDTO newCustomerDTO) {
+    public CustomerDTO save(@Valid @RequestBody CustomerDTO newCustomerDTO) {
 
         return customerService.save(newCustomerDTO);
     }

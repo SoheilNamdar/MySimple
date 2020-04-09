@@ -1,9 +1,13 @@
 package com.mkyong.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class WireTransferDTO {
 
     private Long id;
+    @NotNull
     private String bankID;
+    @NotNull
     private String bankName;
 
     public Long getId() {

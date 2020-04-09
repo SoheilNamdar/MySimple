@@ -1,10 +1,12 @@
 package com.mkyong.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class CreditDTO {
 
     private Long id;
+    @NotNull
     private String number;
     private String type;
     private Date expireDate;

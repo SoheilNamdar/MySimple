@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class WireTransferController {
     // Save
     @PostMapping("/wireTransfers")
     @ResponseStatus(HttpStatus.CREATED)
-    public WireTransferDTO save(@RequestBody WireTransferDTO newWireTransferDTO) {
+    public WireTransferDTO save(@Valid @RequestBody WireTransferDTO newWireTransferDTO) {
 
         return wireTransferService.save(newWireTransferDTO);
     }

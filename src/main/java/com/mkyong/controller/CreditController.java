@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,7 +29,7 @@ public class CreditController {
 
     // Save
     @PostMapping("/credits")
-    public CreditDTO save(@RequestBody CreditDTO newCreditDTO) {
+    public CreditDTO save(@Valid @RequestBody CreditDTO newCreditDTO) {
 
         return creditService.save(newCreditDTO);
     }

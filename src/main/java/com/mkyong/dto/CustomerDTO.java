@@ -1,8 +1,11 @@
 package com.mkyong.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class CustomerDTO {
 
     private Long id;
+    @NotNull
     private String name;
     private String deliveryAddress;
     private String contact;
